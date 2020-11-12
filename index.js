@@ -63,6 +63,10 @@ const colorList = [
 
 var lista = document.querySelector(".color-list");
 
+document.body.addEventListener("click", c => {
+  alert("body");
+});
+
 for (i = 0; i < colorList.length; i++) {
   let colorname = colorList[i].colorName;
 
@@ -79,6 +83,7 @@ for (i = 0; i < colorList.length; i++) {
   let muestra = document.createElement("div");
   muestra.classList.add("color-show");
   muestra.textContent = "Muestra";
+  muestra.style.backgroundColor = color;
   let siguienteColor = document.createElement("button");
   siguienteColor.classList.add("color-set");
   siguienteColor.textContent = "Next Item Color";
