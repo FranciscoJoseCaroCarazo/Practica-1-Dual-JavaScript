@@ -26,6 +26,7 @@
 
 // Buena suerte!
 
+//Lista de Colores
 const colorList = [
   {
     colorName: "white",
@@ -61,18 +62,28 @@ const colorList = [
   }
 ];
 
+//variable selector de la clase
 var lista = document.querySelector(".color-list");
 
+//añadimos el alert para el body
 document.body.addEventListener("click", c => {
   alert("body");
+  c.stopPropagation();
 });
 
+//For que crea todos los componentes de la lista y sus respectivos hijos
 for (i = 0; i < colorList.length; i++) {
   let colorname = colorList[i].colorName;
 
+  //variable con el hexadecimal
   let color = colorList[i].hex;
 
+  //Creamos todos los componentes y les asignamos una clase
   let li = document.createElement("li");
+  li.addEventListener("click", c => {
+    alert("Color: " + colorname);
+    c.stopPropagation();
+  });
   li.classList.add("color-item");
   if (i % 2 == 1) {
     li.classList.add("color-item--odd");
@@ -92,8 +103,10 @@ for (i = 0; i < colorList.length; i++) {
   colorFondo.textContent = "Page Color";
   colorFondo.addEventListener("click", c => {
     document.body.style.backgroundColor = color;
+    c.stopPropagation();
   });
 
+  //Añadimos los hijos a los padres
   li.insertAdjacentElement("beforeend", div);
   li.insertAdjacentElement("beforeend", muestra);
   li.insertAdjacentElement("beforeend", siguienteColor);
@@ -101,6 +114,7 @@ for (i = 0; i < colorList.length; i++) {
   lista.insertAdjacentElement("beforeend", li);
 }
 
+//For que hace que recorramos la lista para cambiar desde un boton el elemento HTML li siguiente y hace que al llegar al final de la lista el indice del for se resete al primero.
 for (i = 0; i < colorList.length; i++) {
   let numero;
   if (i == colorList.length - 1) {
