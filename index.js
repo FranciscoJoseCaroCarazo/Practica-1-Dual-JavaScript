@@ -66,6 +66,8 @@ var lista = document.querySelector(".color-list");
 for (i = 0; i < colorList.length; i++) {
   let colorname = colorList[i].colorName;
 
+  let color = colorList[i].hex;
+
   let li = document.createElement("li");
   li.classList.add("color-item");
   if (i % 2 == 1) {
@@ -107,7 +109,7 @@ for (i = 0; i < colorList.length; i++) {
   let color = colorList[i].hex;
   let li = lista.children;
   btn[numero2].addEventListener("click", c => {
-    li[numero].styles.backgroundColor = color;
+    li[numero].style.backgroundColor = color;
     c.stopPropagation();
   });
 }
